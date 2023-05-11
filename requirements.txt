@@ -1,0 +1,5 @@
+elevenlabs==0.2.10
+pydub==0.25.1
+PyYAML==6.0
+praw==7.7.0
+click==8.1.3
