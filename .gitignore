@@ -1,3 +1,7 @@
+.open_ai_cache/*
+.eleven_labs_cache/*
+generated_podcast_mp3s/*.mp3
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

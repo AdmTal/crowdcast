@@ -8,7 +8,7 @@ username = get_env_var_or_fail('REDDIT_USERNAME')
 password = get_env_var_or_fail('REDDIT_PASSWORD')
 
 
-def get_top_pinned_post_comments(subreddit_name):
+def get_pinned_post_comments(subreddit_name, pinned_post_number, comment_limit):
     subreddit = praw.Reddit(
         client_id=client_id,
         client_secret=client_secret,
@@ -18,17 +18,25 @@ def get_top_pinned_post_comments(subreddit_name):
     ).subreddit(subreddit_name)
 
     top_comments = []
+    stickied_counter = 0
 
     for submission in subreddit.hot(limit=10):
         if submission.stickied:
-            # Get the top comments
-            submission.comment_sort = "top"
-            submission.comments.replace_more(limit=3)
+            stickied_counter += 1
 
-            # Print the top comments
-            for comment in submission.comments[:3]:
-                top_comments.append(comment.body)
+            if stickied_counter == pinned_post_number:
+                # Get the top comments
+                submission.comment_sort = "top"
+                submission.comments.replace_more(limit=comment_limit)
 
-            break
+                # Append the top comments
+                for comment in submission.comments[:comment_limit]:
+                    top_comments.append((
+                        comment.author.name,
+                        comment.body
+                    ))
+
+                break
 
     return top_comments
+
