@@ -177,7 +177,7 @@ def main():
     podcast.export(output_file, format="mp3")
 
     # Write the script to a file
-    output_dir = "generated-podcast-scripts/"
+    output_dir = "generated_podcast_scripts/"
     output_file = f"{output_dir}{unique_id}_{current_date}.txt"
     with open(output_file, 'w+') as script_file:
         script_file.write('\n\n\n'.join([
