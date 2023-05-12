@@ -11,3 +11,6 @@ pip install -r requirements.txt
 
 ## Generate Podcast
 
+```commandline
+python main.py
+```
