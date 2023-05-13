@@ -23,7 +23,9 @@ For each topic, thank the user like "We want to thank NAME who suggested that we
 
 And then list them all, and aim for a natural, informal tone.
 
-End the outro with some sort of - "Be sure to check out the subreddit Crowdcast for more info, and see you next time on Crowdcast!"
+You can mention that the code that runs this podcast is available open source on GitHub, and also contains the transcript from today's episode.
+
+End the outro with some sort of - "Be sure to check out the subreddit Crowdcast for more info, and to submit your own ideas and vote on others, and see you next time on Crowdcast!"
 
 On today's podcast the segments were:
 
