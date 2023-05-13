@@ -30,6 +30,8 @@
 
 The code behind [https://www.reddit.com/r/crowdcast/](https://www.reddit.com/r/crowdcast/), the worlds first open-source, crowd-sourced, AI assisted weekly podcast.
 
+Podcast hosted on Buzzsprout - [Click here to listen on 16 platforms](https://www.buzzsprout.com/2188164/share)!
+
 <hr />
 
 ## How to Install & Run
