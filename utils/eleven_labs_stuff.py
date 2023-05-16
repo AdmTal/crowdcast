@@ -3,7 +3,7 @@ from pydub import AudioSegment
 import io
 import os
 import hashlib
-from utils.os import get_env_var_or_fail
+from utils.os_stuff import get_env_var_or_fail
 import logging
 
 set_api_key(get_env_var_or_fail('ELEVEN_LABS_API_KEY'))

@@ -1,4 +1,4 @@
-from utils.os import get_env_var_or_fail
+from utils.os_stuff import get_env_var_or_fail
 
 BUZZSPROUT_API_KEY = get_env_var_or_fail('BUZZSPROUT_API_KEY')
 

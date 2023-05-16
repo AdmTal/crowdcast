@@ -1,4 +1,4 @@
-from utils.os import get_env_var_or_fail
+from utils.os_stuff import get_env_var_or_fail
 import praw
 
 client_id = get_env_var_or_fail('REDDIT_CLIENT_ID')
