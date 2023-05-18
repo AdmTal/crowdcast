@@ -11,7 +11,7 @@ Write in straightforward text, not in script format.
 """
 
 PROMPT = """
-Write a podcast intro for a podcast called "Crowd Cast" -- which is the worlds first Open-source Crowd Sourced, AI assisted Podcast, Automatically generated weekly based on the top three comments on the crowdcast sub-reddit.
+Write a podcast intro for a podcast called "Crowd Cast" -- which is the worlds first Interactive, AI assisted Podcast, Automatically generated weekly based on the top three comments from our community on the crowdcast subreddit.
 
 Today's date is {date}
 

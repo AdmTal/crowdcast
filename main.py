@@ -15,6 +15,7 @@ from utils import (
     open_ai_stuff,
     date_stuff,
     eleven_labs_stuff,
+    string_stuff,
 )
 
 logging.basicConfig(
@@ -173,27 +174,28 @@ def main():
     output_dir = "generated_podcast_mp3s/"
     current_date = datetime.datetime.now().strftime("%Y-%m-%d")
     unique_id = uuid.uuid4()
-    output_file = f"{output_dir}{unique_id}_{current_date}.mp3"
+    output_file = f"{output_dir}{current_date}_{unique_id}.mp3"
     podcast.export(output_file, format="mp3")
 
     # Write the script to a file
     output_dir = "generated_podcast_scripts/"
-    output_file = f"{output_dir}{unique_id}_{current_date}.txt"
+    output_file = f"{output_dir}{current_date}_{unique_id}.txt"
     with open(output_file, 'w+') as script_file:
-        script_file.write('\n\n\n'.join([
-            intro,
-            segue_1,
-            script_segments[0],
-            script_ads[0],
-            segue_2,
-            script_segments[1],
-            script_ads[1],
-            segue_3,
-            script_segments[2],
-            outro,
+        script_file.write('\n'.join([
+            string_stuff.script_header('Intro'), intro,
+            string_stuff.script_header('Segue 1'), segue_1,
+            string_stuff.script_header('Segment 1'), script_segments[0],
+            string_stuff.script_header('Ad Break 1'), script_ads[0],
+            string_stuff.script_header('Segue 2'), segue_2,
+            string_stuff.script_header('Segment 2'), script_segments[1],
+            string_stuff.script_header('Ad Break 2'), script_ads[1],
+            string_stuff.script_header('Segue 3'), segue_3,
+            string_stuff.script_header('Segment 3'), script_segments[2],
+            string_stuff.script_header('Outro'), outro,
         ]))
 
-    # Upload the podcast to buzzsprout
+    # TODO: Upload the podcast to buzzsprout
+    # (Will do manually for a few weeks before completely automating)
 
 
 if __name__ == '__main__':
