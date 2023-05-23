@@ -1,5 +1,4 @@
 import logging
-import datetime
 import uuid
 
 from pydub import AudioSegment
@@ -30,7 +29,7 @@ _SECOND = 1000
 
 
 def main():
-    current_date = datetime.datetime.now().strftime("%Y-%m-%d")
+    current_date = date_stuff.get_tomorrows_date_for_file_names()
     unique_id = uuid.uuid4()
 
     # (CONTENT) Generate scripts for top 3 comments from FIRST pinned post
@@ -61,7 +60,7 @@ def main():
     intro = open_ai_stuff.generate_gpt4_response(
         podcast_intro.SYSTEM_PROMPT,
         podcast_intro.PROMPT.format(
-            date=date_stuff.get_tomorrows_date(),
+            date=date_stuff.get_tomorrows_date_for_speech(),
             segment_1=script_segments[0],
             segment_2=script_segments[1],
             segment_3=script_segments[2],
@@ -107,6 +106,23 @@ def main():
             ad_2=script_ads[1],
         )
     )
+
+    # Write the script to a file
+    output_dir = "generated_podcast_scripts/"
+    output_file = f"{output_dir}{current_date}_{unique_id}.txt"
+    with open(output_file, 'w+') as script_file:
+        script_file.write('\n'.join([
+            string_stuff.script_header('Intro'), intro,
+            string_stuff.script_header('Segue 1'), segue_1,
+            string_stuff.script_header('Segment 1'), script_segments[0],
+            string_stuff.script_header('Ad Break 1'), script_ads[0],
+            string_stuff.script_header('Segue 2'), segue_2,
+            string_stuff.script_header('Segment 2'), script_segments[1],
+            string_stuff.script_header('Ad Break 2'), script_ads[1],
+            string_stuff.script_header('Segue 3'), segue_3,
+            string_stuff.script_header('Segment 3'), script_segments[2],
+            string_stuff.script_header('Outro'), outro,
+        ]))
 
     # Use elevenlabs to generate the MP3s
     intro_audio = eleven_labs_stuff.convert_text_to_mp3(
@@ -182,23 +198,6 @@ def main():
     output_dir = "generated_podcast_mp3s/"
     output_file = f"{output_dir}{current_date}_{unique_id}.mp3"
     podcast.export(output_file, format="mp3")
-
-    # Write the script to a file
-    output_dir = "generated_podcast_scripts/"
-    output_file = f"{output_dir}{current_date}_{unique_id}.txt"
-    with open(output_file, 'w+') as script_file:
-        script_file.write('\n'.join([
-            string_stuff.script_header('Intro'), intro,
-            string_stuff.script_header('Segue 1'), segue_1,
-            string_stuff.script_header('Segment 1'), script_segments[0],
-            string_stuff.script_header('Ad Break 1'), script_ads[0],
-            string_stuff.script_header('Segue 2'), segue_2,
-            string_stuff.script_header('Segment 2'), script_segments[1],
-            string_stuff.script_header('Ad Break 2'), script_ads[1],
-            string_stuff.script_header('Segue 3'), segue_3,
-            string_stuff.script_header('Segment 3'), script_segments[2],
-            string_stuff.script_header('Outro'), outro,
-        ]))
 
     # TODO: Upload the podcast to buzzsprout
     # (Will do manually for a few weeks before completely automating)
