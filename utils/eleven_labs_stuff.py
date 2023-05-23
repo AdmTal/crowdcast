@@ -12,14 +12,14 @@ HOST_VOICE = Voice(
     voice_id="21m00Tcm4TlvDq8ikWAM",
     name="Rachel",
     category="premade",
-    settings=VoiceSettings(stability=0.4, similarity_boost=0.85),
+    settings=VoiceSettings(stability=0.3, similarity_boost=0.95),
 )
 
 ADS_VOICE = Voice(
     voice_id="TxGEqnHWrfWFTfGW9XjX",
     name="Josh",
     category="premade",
-    settings=VoiceSettings(stability=0.4, similarity_boost=0.85),
+    settings=VoiceSettings(stability=0.3, similarity_boost=0.95),
 )
 
 
