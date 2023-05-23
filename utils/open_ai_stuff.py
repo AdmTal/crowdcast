@@ -9,6 +9,8 @@ openai.api_key = get_env_var_or_fail("OPENAI_API_KEY")
 
 
 def generate_gpt4_response(system_prompt, user_prompt):
+    logging.info(f'generate_gpt4_response SYSTEM: {system_prompt}')
+    logging.info(f'generate_gpt4_response PROMPT: {user_prompt}')
     # Create MD5 hash of user_submitted_text
     md5 = hashlib.md5()
     hash_key = f'{system_prompt}{user_prompt}'
@@ -48,4 +50,5 @@ def generate_gpt4_response(system_prompt, user_prompt):
     with open(cache_file, 'w') as f:
         f.write(result)
 
+    logging.info(f'generate_gpt4_response RESULT: {result}')
     return result

@@ -9,6 +9,7 @@ from prompts import (
     podcast_intro,
     podcast_outro,
     podcast_segue,
+    prompt_enhancer,
 )
 from utils import (
     reddit_stuff,
@@ -29,13 +30,20 @@ _SECOND = 1000
 
 
 def main():
+    current_date = datetime.datetime.now().strftime("%Y-%m-%d")
+    unique_id = uuid.uuid4()
+
     # (CONTENT) Generate scripts for top 3 comments from FIRST pinned post
     top_three_segments_comments = reddit_stuff.get_pinned_post_comments(_SUBREDDIT, 1, 3)
     script_segments = []
     authors = []
     for author, comment in top_three_segments_comments:
         authors.append(author)
-        segment = open_ai_stuff.generate_gpt4_response(podcast_segment.SYSTEM_PROMPT, comment)
+        enhanced_comment = open_ai_stuff.generate_gpt4_response(prompt_enhancer.SYSTEM_PROMPT, comment)
+        segment = open_ai_stuff.generate_gpt4_response(
+            podcast_segment.SYSTEM_PROMPT,
+            f'PROMPT:\n{enhanced_comment}'
+        )
         script_segments.append(segment)
 
     # (ADS) Generate scripts for top 2 comments from SECOND pinned post
@@ -172,8 +180,6 @@ def main():
 
     # Export the final audio file
     output_dir = "generated_podcast_mp3s/"
-    current_date = datetime.datetime.now().strftime("%Y-%m-%d")
-    unique_id = uuid.uuid4()
     output_file = f"{output_dir}{current_date}_{unique_id}.mp3"
     podcast.export(output_file, format="mp3")
 
