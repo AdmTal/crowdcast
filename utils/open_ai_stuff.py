@@ -11,7 +11,8 @@ openai.api_key = get_env_var_or_fail("OPENAI_API_KEY")
 def generate_gpt4_response(system_prompt, user_prompt):
     # Create MD5 hash of user_submitted_text
     md5 = hashlib.md5()
-    md5.update(user_prompt.encode('utf-8'))
+    hash_key = f'{system_prompt}{user_prompt}'
+    md5.update(hash_key.encode('utf-8'))
     cache_id = md5.hexdigest()
 
     cache_dir = '.open_ai_cache'
