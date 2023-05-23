@@ -53,7 +53,7 @@ def main():
     intro = open_ai_stuff.generate_gpt4_response(
         podcast_intro.SYSTEM_PROMPT,
         podcast_intro.PROMPT.format(
-            date=date_stuff.get_todays_date(),
+            date=date_stuff.get_tomorrows_date(),
             segment_1=script_segments[0],
             segment_2=script_segments[1],
             segment_3=script_segments[2],

@@ -1,2 +1,2 @@
 def script_header(string):
-    return f'{string}:\n'
+    return f'\n{string.upper()}:\n'
