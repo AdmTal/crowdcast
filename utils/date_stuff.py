@@ -1,7 +1,11 @@
 from datetime import datetime, timedelta
 
 
-def get_tomorrows_date():
+def get_tomorrows_date_for_file_names():
+    return datetime.now().strftime("%Y-%m-%d")
+
+
+def get_tomorrows_date_for_speech():
     # Get the current date and add one day to get tomorrow's date
     tomorrow_date = datetime.now() + timedelta(days=1)
 

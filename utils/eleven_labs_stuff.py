@@ -9,17 +9,13 @@ import logging
 set_api_key(get_env_var_or_fail('ELEVEN_LABS_API_KEY'))
 
 HOST_VOICE = Voice(
-    voice_id="21m00Tcm4TlvDq8ikWAM",
-    name="Rachel",
-    category="premade",
-    settings=VoiceSettings(stability=0.3, similarity_boost=0.95),
+    voice_id="C5MiMVcvrrfHD9MbHb5Y",
+    settings=VoiceSettings(stability=0.35, similarity_boost=0.9),
 )
 
 ADS_VOICE = Voice(
     voice_id="TxGEqnHWrfWFTfGW9XjX",
-    name="Josh",
-    category="premade",
-    settings=VoiceSettings(stability=0.3, similarity_boost=0.95),
+    settings=VoiceSettings(stability=0.35, similarity_boost=0.9),
 )
 
 
