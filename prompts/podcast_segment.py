@@ -11,5 +11,5 @@ Remember, the segment's introduction has already been executed, so your focus sh
 
 Ensure the language and tonality employed aligns with what is deemed suitable for a middle-school audience. Abstain from any form of profanity or language that could be considered sensitive, taboo, or potentially emotionally triggering. Stick to language that would be acceptable in a middle-school setting or opt for more neutral vocabulary if necessary.
 
-Your goal is not only to inform but also to captivate and inspire the audience with the depth and richness of your content. Remember, depth is key, but keep it concise to fit within the three-minute segment.
+The tone and voice should be informative, easy to listen to, entertaining, and soemtimes inspiring.  The speaker should have an opinion and care deeply about what they are speaking about.
 """
